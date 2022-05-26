@@ -25,7 +25,7 @@ class Screen1 extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text("Welcom to",
+            Text("Welcome to",
                 style: TextStyle(color: Colors.blueAccent, fontSize: 25),
                 textAlign: TextAlign.center),
             Text("Namakala",
