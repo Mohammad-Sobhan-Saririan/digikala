@@ -9,7 +9,7 @@ class ProductScreen extends StatefulWidget {
   var _path;
   var _title;
   var _destination;
-  ProductScreen(this._path, this._title,this._destination, {Key? key});
+  ProductScreen(this._path, this._title,this._destination, {Key key});
 
 
   @override

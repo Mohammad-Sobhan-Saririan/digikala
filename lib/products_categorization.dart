@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'pagepruduct.dart';
 
 class Category extends StatelessWidget {
-  const Category({Key? key}) : super(key: key);
+  const Category({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

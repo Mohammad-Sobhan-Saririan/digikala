@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:digikala/digitalproducts.dart';
 
+import 'eachproductlist.dart';
+
 class ProductDetails extends StatefulWidget {
   var _path;
   var _title;
   var _destination;
 
-  ProductDetails(this._path, this._title, this._destination, {Key? key});
+  ProductDetails(this._path, this._title, this._destination, {Key key});
 
   @override
   State<ProductDetails> createState() =>
@@ -43,24 +45,24 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
               maxLines: 3,
             ),
-            SizedBox(width: 30,),
+            SizedBox(width: 200,),
             TextButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      // if(_destination=='ProductDetails') {
-                      //   return ProductDetails("images/laptop.jpg","Mobile","ProductDetails");
-                      // }
-                      return Screen1();
-                    },
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       // if(_destination=='ProductDetails') {
+                //       //   return ProductDetails("images/laptop.jpg","Mobile","ProductDetails");
+                //       // }
+                //       return ListProduct();
+                //     },
+                //   ),
+                // );
               },
               child: Image.asset(
                 _path,
-                width: 160,
-                height: 110,
+                width: 100,
+                height: 100,
               ),
             ),
           ],
