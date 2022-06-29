@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import 'Pages/profilepage.dart';
 import 'pagepruduct.dart';
 
 class Category extends StatelessWidget {
@@ -55,7 +56,10 @@ class Category extends StatelessWidget {
                 icon: const Icon(Icons.account_circle),
                 tooltip: 'Profile',
                 onPressed: () {
-                  // handle the press
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Profile(_user)));
                 },
               ),
             ],

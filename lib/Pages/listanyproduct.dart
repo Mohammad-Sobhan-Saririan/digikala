@@ -1,4 +1,6 @@
 import 'package:digikala/Pages/pageofalldetails.dart';
+import 'package:digikala/Pages/profilepage.dart';
+import 'package:digikala/Pages/shoppingcart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -36,12 +38,28 @@ class listofproducts extends StatelessWidget {
 
             actions: <Widget>[
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.star)),
+                alignment: Alignment.centerLeft,
+                icon: const Icon(Icons.account_circle),
+                tooltip: 'Profile',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Profile(user)));
+                },
+              ),
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 tooltip: 'Open shopping cart',
                 onPressed: () {
-                  // handle the press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return listofuserproduct(user);
+                      },
+                    ),
+                  );
                 },
               ),
             ],

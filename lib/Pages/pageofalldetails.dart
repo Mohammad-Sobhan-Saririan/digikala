@@ -1,4 +1,5 @@
 import 'package:digikala/ClassOfProducts/product.dart';
+import 'package:digikala/Pages/profilepage.dart';
 import 'package:digikala/Pages/shoppingcart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,22 +25,10 @@ class _AllDetailsState extends State<AllDetails> {
   _AllDetailsState(this.user,this.product);
   String addproduct;
   String Details="";
-  // List<Product> array=[];
+
   @override
   Widget build(BuildContext context) {
-    // array=[];
-    // array.add(Product(categoryy.Digital, Typee.Mobile, "Iphone 13 pro max 256G", user, "assets/images/laptop.jpg", "12300000",
-    //     ["Ram16","Screen size range:6.0 inches and larger","communication networks : 2G, 3G, 4G","Photo resolution : 50 megapixels"]));
-    // array.add(Product(categoryy.Digital, Typee.Mobile, "Iphone 13 pro max 2561", user, "assets/images/laptop.jpg", "12300000",
-    //     ["Ram16","Screen size range:6.0 inches and larger","communication networks : 2G, 3G, 4G","Photo resolution : 50 megapixels"]));
-    // array.add(Product(categoryy.Digital, Typee.Camera, "Iphone 13 pro max 2562", user, "assets/images/laptop.jpg", "12300000",
-    //     ["Ram16","Screen size range:6.0 inches and larger","communication networks : 2G, 3G, 4G","Photo resolution : 50 megapixels"]));
-    // array.add(Product(categoryy.Digital, Typee.Camera, "Iphone 13 pro max 2563", user, "assets/images/laptop.jpg", "12300000",
-    //     ["Ram16","Screen size range:6.0 inches and larger","communication networks : 2G, 3G, 4G","Photo resolution : 50 megapixels"]));
 
-
-    product = Product(categoryy.Digital, Typee.Camera, "Iphone 13 pro max 256", user, "assets/images/laptop.jpg", "12300000",
-        ["Ram16","Screen size range:6.0 inches and larger","communication networks : 2G, 3G, 4G","Photo resolution : 50 megapixels"]);
 
     Details="";
     for(int i=0;i<product.showProperty.length;i++){
@@ -52,6 +41,7 @@ class _AllDetailsState extends State<AllDetails> {
       }
 
     addproduct= d ? "Product added to list" : "Add Product to your list";
+      checkedicon = d ? Icons.check_box : Icons.add_box;
     a= d ? Colors.teal : Colors.red;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -68,7 +58,16 @@ class _AllDetailsState extends State<AllDetails> {
 
             actions: <Widget>[
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.star)),
+                alignment: Alignment.centerLeft,
+                icon: const Icon(Icons.account_circle),
+                tooltip: 'Profile',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Profile(user)));
+                },
+              ),
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 tooltip: 'Open shopping cart',

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: "googlesans"),
       debugShowCheckedModeBanner: false,
-      home: AddProduct(
+      home: Screen1(
 
       ),
     );

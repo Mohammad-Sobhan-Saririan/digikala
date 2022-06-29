@@ -251,8 +251,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       margin: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
-                          if (true) {
-                            // _formKey.currentState.validate()
+                          if (_formKey.currentState.validate()) {
                             user = User(
                                 _name.text,
                                 _surename.text,

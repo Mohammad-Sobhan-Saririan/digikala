@@ -1,4 +1,5 @@
 import 'package:digikala/ClassOfProducts/Catergory.dart';
+import 'package:digikala/Pages/profilepage.dart';
 import 'package:digikala/Signin_up_pages/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,14 +47,17 @@ class _AddProductState extends State<AddProduct> {
               onPressed: () => Navigator.pop(context, false),
             ),
             actions: <Widget>[
-              IconButton(onPressed: () {}, icon: Icon(Icons.star)),
               IconButton(
-                icon: const Icon(Icons.shopping_cart),
-                tooltip: 'Open shopping cart',
-                onPressed: () {
-                  // handle the press
-                },
-              ),
+              alignment: Alignment.centerLeft,
+              icon: const Icon(Icons.account_circle),
+              tooltip: 'Profile',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Profile(user)));
+              },
+            )
             ],
           ),
           // backgroundColor: Color(0xFFFAFAFA),
@@ -422,6 +426,7 @@ class _AddProductState extends State<AddProduct> {
                               _Price.text,
                               [],
                             );
+                            user.toSellProducts.add(product);
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('User SignUp Successfully'),

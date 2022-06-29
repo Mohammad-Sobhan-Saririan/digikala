@@ -18,6 +18,8 @@ class User{
     this.lastName=lastName;
     this.phoneNumber=phoneNumber;
     this.password=password;
+    imagePath="assets/images/human.jpg";
+    email="";
     this.orderedProducts=[];
     this.likedProducts=[];
     this.toSellProducts=[];
