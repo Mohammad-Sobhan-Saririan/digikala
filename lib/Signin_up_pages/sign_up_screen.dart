@@ -1,6 +1,7 @@
 import 'package:digikala/Signin_up_pages/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../ClassOfProducts/User.dart';
 import '../products_categorization.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -17,9 +18,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   RegExp regexForNumber = RegExp(r'[0-9]+');
   RegExp regexForPhoneNumber = RegExp(r'^(\+98|0)?9\d{9}$');
   final _formKey = GlobalKey<FormState>();
+  TextEditingController _name = TextEditingController();
+  TextEditingController  _surename = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _number = TextEditingController();
   TextEditingController _confirmPassword = TextEditingController();
+  User user;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       margin: EdgeInsets.all(10.0),
                       child: TextFormField(
+                        controller: _name,
                         validator: (value) {
                           if (value == null || value.isEmpty||value.length<5) {
                             return 'Invalid Name\nName mute be at least 5 characters';
@@ -83,6 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       margin: EdgeInsets.all(10.0),
                       child: TextFormField(
+                        controller: _surename,
                         validator: (value) {
                           if (value == null || value.isEmpty||value.length<6) {
                             return 'Invalid SurName\nSurName mute be at least 6 characters';
@@ -245,7 +251,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       margin: EdgeInsets.all(10),
                       child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState.validate()) {
+                          if (true) {
+                            // _formKey.currentState.validate()
+                            user = User(
+                                _name.text,
+                                _surename.text,
+                                _number.text,
+                                _password.text);
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('User SignUp Successfully'),
@@ -255,7 +267,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return Category();
+                                  return Category(user);
                                 },
                               ),
                             );

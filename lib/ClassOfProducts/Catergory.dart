@@ -1,6 +1,6 @@
 enum categoryy{
-  Digital , Cloth , Book_Stationery , Stort_Travel
+  Digital , Clothe , Book_Stationery , Sport_Travel
 }
 enum Typee{
-  Mobile,TravelAccessories,Sportswear,SportingGoods,Handicrafts,Music,Stationery,Book,Children,Male,Female,Camera,Laptop
+  Mobile,Camera,Laptop,TravelAccessories,Sportswear,SportingGoods,Handicrafts,Music,Stationery,Book,Children,Male,Female
 }

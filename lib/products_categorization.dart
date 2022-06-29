@@ -10,17 +10,21 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'pagepruduct.dart';
 
 class Category extends StatelessWidget {
-  Category({Key key}) : super(key: key);
-  User user = User("name", "lastName", "09133368689", "email", "assets/images/laptop.jpg");
+  Category(this._user,{Key key}) : super(key: key);
+  User _user ;
   List<Product> list=[];
 
   @override
   Widget build(BuildContext context) {
     list = [
-    Product(categoryy.Digital, Typee.Mobile, "Mobile", user, "assets/images/laptop.jpg", "123", []),
-    Product(categoryy.Digital, Typee.Mobile, "Mobile", user, "assets/images/laptop.jpg", "1234", []),
-    Product(categoryy.Digital, Typee.Mobile, "Mobile", user, "assets/images/laptop.jpg", "1235", []),
-    Product(categoryy.Digital, Typee.Mobile, "Mobile", user, "assets/images/laptop.jpg", "1236", []),
+    Product(categoryy.Digital, Typee.Mobile, "Mobile", _user, "assets/images/laptop.jpg", "12300000", []),
+    Product(categoryy.Digital, Typee.Mobile, "Mobile", _user, "assets/images/laptop.jpg", "12340000", []),
+    Product(categoryy.Digital, Typee.Mobile, "Mobile", _user, "assets/images/laptop.jpg", "12350000", []),
+    Product(categoryy.Digital, Typee.Mobile, "Iphone 13 pro max 256G", _user, "assets/images/laptop.jpg", "1236000000000", []),
+      Product(categoryy.Digital, Typee.Camera, "Mobile", _user, "assets/images/laptop.jpg", "12300000", []),
+    Product(categoryy.Digital, Typee.Camera, "Mobile", _user, "assets/images/laptop.jpg", "12340000", []),
+    Product(categoryy.Digital, Typee.Camera, "Mobile", _user, "assets/images/laptop.jpg", "12350000", []),
+    Product(categoryy.Digital, Typee.Camera, "Iphone 13 pro max 256G", _user, "assets/images/laptop.jpg", "1236000000000", []),
   ];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -29,14 +33,27 @@ class Category extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Color(0xFF8c6aad),
           appBar: AppBar(
+            automaticallyImplyLeading: true,
             backgroundColor: Colors.lightGreen,
             centerTitle: true,
             title: Text("List Of Products",
                 style: TextStyle(wordSpacing: 2, fontSize: 20)),
+              leading: IconButton(icon:Icon(Icons.arrow_back),
+                onPressed:() => Navigator.pop(context, false),
+              ),
+
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.shopping_cart),
                 tooltip: 'Open shopping cart',
+                onPressed: () {
+                  // handle the press
+                },
+              ),
+              IconButton(
+                alignment: Alignment.centerLeft,
+                icon: const Icon(Icons.account_circle),
+                tooltip: 'Profile',
                 onPressed: () {
                   // handle the press
                 },
@@ -55,11 +72,11 @@ class Category extends StatelessWidget {
                           child: Row(
                             children: [
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Mobile", list),
+                                  _user,"assets/images/laptop.jpg", "Mobile", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Laptop", list),
+                                  _user, "assets/images/laptop.jpg", "Laptop", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Camera", list),
+                                  _user,"assets/images/laptop.jpg", "Camera", list),
                             ],
                           ),
                           scrollDirection: Axis.horizontal,
@@ -69,11 +86,11 @@ class Category extends StatelessWidget {
                           child: Row(
                             children: [
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Female", list),
+                                  _user,"assets/images/laptop.jpg", "Female", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Male", list),
+                                  _user,"assets/images/laptop.jpg", "Male", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Children", list),
+                                  _user,"assets/images/laptop.jpg", "Children", list),
                             ],
                           ),
                           scrollDirection: Axis.horizontal,
@@ -83,13 +100,13 @@ class Category extends StatelessWidget {
                           child: Row(
                             children: [
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Book", list),
+                                  _user, "assets/images/laptop.jpg", "Book", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Stationery", list),
+                                  _user,"assets/images/laptop.jpg", "Stationery", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Music", list),
+                                  _user, "assets/images/laptop.jpg", "Music", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Handicrafts", list),
+                                  _user,"assets/images/laptop.jpg", "Handicrafts", list),
                             ],
                           ),
                           scrollDirection: Axis.horizontal
@@ -99,11 +116,11 @@ class Category extends StatelessWidget {
                           child: Row(
                             children: [
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "SportingGoods", list),
+                                  _user,"assets/images/laptop.jpg", "SportingGoods", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "Sportswear", list),
+                                  _user, "assets/images/laptop.jpg", "Sportswear", list),
                               ProductScreen(
-                                  "assets/images/laptop.jpg", "TravelAccessories", list),
+                                  _user, "assets/images/laptop.jpg", "TravelAccessories", list),
 
                             ],
                           ),

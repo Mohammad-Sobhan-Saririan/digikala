@@ -12,16 +12,32 @@ class Product{
   String price;
   List<String> showProperty ;
   List<int> rateList=[];
-  double rate(){
-    double a=0;
-    for(int i=0;i<5;i++){
-      a+=2;
-    }
-    return a/5;
+  double _rate=0 ;
+
+
+  double get rate {
+    if(rateList==null||rateList.isEmpty) return 0.0;
+    return _rate/rateList.length;
   }
-
-
 
   Product(this.category, this.type, this.title, this.shopMan, this.imagePath,
       this.price, this.showProperty);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Product &&
+          runtimeType == other.runtimeType &&
+          category == other.category &&
+          type == other.type &&
+          title == other.title &&
+          shopMan == other.shopMan &&
+          price == other.price ;
+  @override
+  int get hashCode =>
+      category.hashCode ^
+      type.hashCode ^
+      title.hashCode ^
+      shopMan.hashCode ^
+      price.hashCode ;
 }

@@ -2,6 +2,8 @@ import 'package:digikala/Signin_up_pages/sign_up_screen.dart';
 import 'package:digikala/products_categorization.dart';
 import 'package:flutter/material.dart';
 
+import '../ClassOfProducts/User.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key key}) : super(key: key);
 
@@ -17,10 +19,15 @@ class _SignInScreenState extends State<SignInScreen> {
   RegExp regexForPhoneNumber = RegExp(r'^(\+98|0)?9\d{9}$');
   String pass = "1234";
   Color x = Colors.red;
+  List<User> users = [User("ali", "alavi", "09100375851", "123456aA"),];
   final _formKey = GlobalKey<FormState>();
   bool _isVisiblePassword = false;
   TextEditingController _password = TextEditingController();
   TextEditingController _number = TextEditingController();
+  User _user;
+  String number ;
+  bool _presentnumber = false;
+  bool _presentpassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +58,20 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: TextFormField(
                         controller: _number,
                         validator: (value) {
-                          if (value == null || value.isEmpty ||
+                          if (value == null || value.isEmpty||
                               !regexForPhoneNumber.hasMatch(value)||value.length<11) {
                             return 'Please enter valid text';
                           }
+                          for (var i = 0; i < users.length; i++) {
+                            if (value == users[i].phoneNumber) {
+                              number = value;
+                              _presentnumber = true;
+                            }
+                          }
+                          if(!_presentnumber){
+                            return "There is no user with this phone number";
+                          }
+
                           return null;
                         },
                         decoration: InputDecoration(
@@ -88,12 +105,27 @@ class _SignInScreenState extends State<SignInScreen> {
 
                         controller: _password,
                         validator: (value) {
+                          if(number==null){
+                            return null;
+                          }
                           if (value == null || value.isEmpty ||
                               !regexForLowerCase.hasMatch(value)||
                               !regexForUpperCase.hasMatch(value)||
                               !regexForNumber.hasMatch(value)||
                               value.length<8) {
                             return 'Password must contain at least one lowercase, one uppercase,\n one number and at least 8 characters';
+                          }
+                          for (var i = 0; i < users.length; i++) {
+                            if (number == users[i].phoneNumber) {
+                              if (value == users[i].password) {
+                                _user= users[i];
+                                _presentpassword = true;
+                                break;
+                              }
+                            }
+                          }
+                          if(!_presentpassword){
+                            return "Wrong password";
                           }
                           return null;
                         },
@@ -158,7 +190,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return Category();
+                                return Category(_user);
                               },
                             ),
                           );
